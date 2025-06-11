@@ -28,17 +28,11 @@ pipeline {
                 }
             }
         }
-
-	    stage('Manual Approval') {
-            steps {
-                input "Approve?"
-            }
-        }
 	    
         stage('Terraform Apply') {
             steps {
                 script {
-                    sh 'terraform apply tfplan'
+                    sh 'terraform apply -auto-approve'
                 }
             }
         }
